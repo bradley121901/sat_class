@@ -35,8 +35,7 @@ def register(request):
                 email = form.cleaned_data["email"]
                 
                 document = {"username": username, "password":password, "firstname": firstname, "lastname": lastname, "email": email}
-                
-                
+        
                 client = pymongo.MongoClient(connection_string)
                 db = client["Cluster0"]
                 collection = db["Cluster0"]
@@ -50,4 +49,23 @@ def login(request):
     if request.method == "GET":
         form = login_form()
         return render(request, "login.html", {"form":form})
+    if request.method == "POST":
+        if "Login" in request.POST:
+            form = login_form(request.POST)
+            if form.is_valid():
+                username = form.cleaned_data["username"]
+                password = form.cleaned_data["password"]
+                
+                document = {"username":username, "password":password}
+                client = pymongo.MongoClient(connection_string)
+                db = client["Cluster0"]
+                collection = db["Cluster0"]
+                flag = collection.find_one(document)
+                client.close()
+                if flag:
+                    return redirect(f'/')
+                else:
+                    return redirect(f'/loginpage')
+                
+        
     

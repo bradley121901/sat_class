@@ -4,6 +4,23 @@
 <html>
   <head>
     <title>Saturday Website</title>
+    <style>
+      body {
+        background-color: #faebd7;
+        text-align: center;
+      }
+      p {
+        font-size: 50px;
+      }
+
+      .register-button {
+        font-size: 40px;
+      }
+
+      .login-button {
+        font-size: 40px;
+      }
+    </style>
   </head>
   <body>
     <img src="{% static 'mushroom.png' %}" alt="mushroom image" />
@@ -11,8 +28,10 @@
     <form method="post" action="">
       {% csrf_token %}
 
-      <button type="submit" name="Register">Register</button>
-      <button type="submit" name="Login">Login</button>
+      <button class="register-button" type="submit" name="Register">
+        Register
+      </button>
+      <button class="login-button" type="submit" name="Login">Login</button>
     </form>
   </body>
 </html>

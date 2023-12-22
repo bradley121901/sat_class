@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Saturday Website</title>
+  </head>
+  <body>
+    <img src="{% static 'mushroom.png' %}" alt="mushroom image" />
+    <p>Do you want to login or register?</p>
+    <form method="post" action="">
+      {% csrf_token %}
+
+      <button type="submit" name="Register">Register</button>
+      <button type="submit" name="Login">Login</button>
+    </form>
+  </body>
+</html>

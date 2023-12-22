@@ -1,6 +1,9 @@
-<p>Do you want to login or register?</p>
-<form method="post" action="">
-  {% csrf_token %}
 
-  <button type="submit" name="Complete">Register</button>
+<!DOCTYPE html>
+
+<h1>Sign Up with your credentials</h1>
+<form method="post" action="">
+    {% csrf_token %} {{form.as_p}}
+<button type="submit" name="Register">Confirm and Register</button>
 </form>
+</html>
